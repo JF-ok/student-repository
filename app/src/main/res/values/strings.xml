@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">IntentTestApplication</string>
-    <string name="new_text">Click</string>
+    <string name="new_text">Кнопка</string>
 </resources>

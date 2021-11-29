@@ -5,26 +5,41 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import java.security.Key
 import kotlin.random.Random
+
+const val TAG = "MainActivity"
+const val KEY = "random text"
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var helloTextView: TextView
-    lateinit var newTextButton : Button
+    lateinit var randomTextView: TextView
+    lateinit var randomButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        helloTextView = findViewById(R.id.hello_world_text_view)
-        newTextButton = findViewById(R.id.new_text_button)
-        newTextButtonClick()
+        randomTextView = findViewById(R.id.random_text_view)
+        randomButton = findViewById(R.id.randomButton)
+
+        if(savedInstanceState != null){
+            randomTextView.text = savedInstanceState.getString(KEY)
+        }
+        newRandomText()
     }
 
-    private fun newTextButtonClick(){
-        newTextButton.setOnClickListener{
-            helloTextView.text = Random.nextInt().toString()
-            Toast.makeText(this, Random.nextInt().toString(), Toast.LENGTH_SHORT).show()
+
+    private fun newRandomText(){
+        randomButton.setOnClickListener{
+            randomTextView.text = Random.nextInt(100).toString()
+            Toast.makeText(this, "Клик!", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle){
+        super.onSaveInstanceState(outState)
+
+        outState.putString(KEY, randomTextView.text.toString())
     }
 }
