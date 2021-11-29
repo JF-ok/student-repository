@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">IntetnTestApplication</string>
+    <string name="app_name">IntentTestApplication</string>
+    <string name="new_text">Click</string>
 </resources>
